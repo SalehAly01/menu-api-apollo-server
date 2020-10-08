@@ -1,0 +1,39 @@
+{
+  "name": "cafe-backend",
+  "version": "1.0.0",
+  "description": "Cafe App API",
+  "main": "index.js",
+  "author": "Saleh Aly",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "dev": "nodemon --exec yarn restart",
+    "restart": "rimraf dist && yarn build && yarn start",
+    "start": "node dist/index.js",
+    "format": "prettier --write \"src/**/*.js\"",
+    "lint": "eslint --ext js src",
+    "lint:fix": "eslint --ext js src --fix"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.5",
+    "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.10.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "graphql-codegen-core": "^0.18.2",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.1.2"
+  },
+  "dependencies": {
+    "apollo-server": "^2.18.2",
+    "graphql": "^15.3.0"
+  }
+}
