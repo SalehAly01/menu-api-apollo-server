@@ -1,0 +1,35 @@
+enum MenuItemType {
+  MAIN_COURSE
+  SIDE
+}
+
+interface MenuItem {
+  name: String!
+  price: Float!
+  image: String!
+  type: MenuItemType!
+}
+
+input NewMenuItemInput {
+  name: String!
+  price: Float!
+  image: String!
+  type: MenuItemType!
+}
+
+input UpdateMenuItemInput {
+  name: String
+  price: Float
+  image: String
+}
+
+type Query {
+  menuItems: [MenuItem]!
+  menuItem(id: ID!): MenuItem!
+}
+
+type Mutation {
+  newMenuItem(input: NewMenuItemInput!): MenuItem!
+  updateMenuItem(id: ID!, input: UpdateMenuItemInput!): MenuItem!
+  removeMenuItem(id: ID!): MenuItem!
+}
