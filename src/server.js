@@ -1,17 +1,18 @@
 import { ApolloServer } from 'apollo-server';
+import { mergeTypeDefs } from 'graphql-tools';
 
 import config from './config';
 import connect from './db';
 
-const start = async () => {
-  const rootSchema = `
-    schema {
-      query: Query
-      mutation: Mutation
-    }
-  `;
+import loadTypeSchema from './helpers/schema';
 
-  const server = new ApolloServer({ typeDefs: [rootSchema], resolvers: {} });
+const start = async () => {
+  const menuItemSchema = await loadTypeSchema('menu-item');
+
+  const server = new ApolloServer({
+    typeDefs: mergeTypeDefs([menuItemSchema]),
+    resolvers: {},
+  });
 
   await connect(config.dbUrl);
   const { url } = await server.listen({ port: config.port });
