@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import { Types } from 'mongoose';
 
 import { MenuItem } from './menu-item.model';
 import handleImageUpload from '../../helpers/upload-image';
@@ -8,7 +8,7 @@ const menuItem = (_, args) => {
 };
 
 const newMenuItem = (_, args) => {
-  return MenuItem.create({ ...args.input, _id: new mongoose.Types.ObjectId() });
+  return MenuItem.create({ ...args.input, _id: new Types.ObjectId() });
 };
 
 const menuItems = () => {

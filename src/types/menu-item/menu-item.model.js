@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-export const menuItemSchema = new mongoose.Schema(
+export const menuItemSchema = new Schema(
   {
-    _id: mongoose.Schema.Types.ObjectId,
+    _id: Schema.Types.ObjectId,
     name: {
       type: String,
       required: true,
@@ -27,4 +27,4 @@ export const menuItemSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export const MenuItem = mongoose.model('menuItem', menuItemSchema);
+export const MenuItem = model('menuItem', menuItemSchema);
