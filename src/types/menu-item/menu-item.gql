@@ -24,6 +24,13 @@ input UpdateMenuItemInput {
   image: String
 }
 
+type S3Object {
+  ETag: String
+  Location: String!
+  Key: String!
+  Bucket: String!
+}
+
 type Query {
   menuItems: [MenuItem]!
   menuItem(id: ID!): MenuItem!
@@ -31,6 +38,7 @@ type Query {
 
 type Mutation {
   newMenuItem(input: NewMenuItemInput!): MenuItem!
+  uploadImage(file: Upload!): S3Object
   updateMenuItem(id: ID!, input: UpdateMenuItemInput!): MenuItem!
   removeMenuItem(id: ID!): MenuItem!
 }

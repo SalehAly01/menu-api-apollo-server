@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
+
 import { MenuItem } from './menu-item.model';
+import handleImageUpload from '../../helpers/upload-image';
 
 const menuItem = (_, args) => {
   return MenuItem.findById(args.id).lean().exec();
@@ -24,6 +26,11 @@ const removeMenuItem = (_, args) => {
   return MenuItem.findByIdAndRemove(args.id).lean().exec();
 };
 
+const uploadImage = async (parent, { file }) => {
+  const response = await handleImageUpload(file);
+  return response;
+};
+
 export default {
   Query: {
     menuItems,
@@ -31,6 +38,7 @@ export default {
   },
   Mutation: {
     newMenuItem,
+    uploadImage,
     updateMenuItem,
     removeMenuItem,
   },
