@@ -1,8 +1,9 @@
 import { ApolloServer } from 'apollo-server';
-import { mergeTypeDefs } from 'graphql-tools';
+import { mergeResolvers, mergeTypeDefs } from 'graphql-tools';
 
 import config from './config';
 import connect from './db';
+import menuItem from './types/menu-item/menu-item.resolvers';
 
 import loadTypeSchema from './helpers/schema';
 
@@ -11,7 +12,7 @@ const start = async () => {
 
   const server = new ApolloServer({
     typeDefs: mergeTypeDefs([menuItemSchema]),
-    resolvers: {},
+    resolvers: mergeResolvers([menuItem]),
   });
 
   await connect(config.dbUrl);

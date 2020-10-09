@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 
 export const menuItemSchema = new mongoose.Schema(
   {
+    _id: mongoose.Schema.Types.ObjectId,
     name: {
       type: String,
       required: true,
@@ -14,7 +15,7 @@ export const menuItemSchema = new mongoose.Schema(
     },
     image: {
       type: String,
-      required: true,
+      required: false,
       default: 'https://via.placeholder.com/500',
     },
     type: {

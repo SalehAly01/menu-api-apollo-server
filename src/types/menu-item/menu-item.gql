@@ -3,17 +3,18 @@ enum MenuItemType {
   SIDE
 }
 
-interface MenuItem {
+type MenuItem {
+  _id: ID!
   name: String!
   price: Float!
-  image: String!
+  image: String
   type: MenuItemType!
 }
 
 input NewMenuItemInput {
   name: String!
   price: Float!
-  image: String!
+  image: String
   type: MenuItemType!
 }
 
