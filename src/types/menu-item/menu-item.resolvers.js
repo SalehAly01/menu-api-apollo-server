@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import { MenuItem } from './menu-item.model';
 
 const menuItem = (_, args) => {
@@ -5,7 +6,7 @@ const menuItem = (_, args) => {
 };
 
 const newMenuItem = (_, args) => {
-  return MenuItem.create(args.input);
+  return MenuItem.create({ ...args.input, _id: new mongoose.Types.ObjectId() });
 };
 
 const menuItems = () => {
