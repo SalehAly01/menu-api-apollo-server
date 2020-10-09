@@ -3,27 +3,24 @@ import { Types } from 'mongoose';
 import { MenuItem } from './menu-item.model';
 import handleImageUpload from '../../helpers/upload-image';
 
-const menuItem = (_, args) => {
-  return MenuItem.findById(args.id).lean().exec();
+const menuItem = (_, { id }) => {
+  return MenuItem.findById(id).lean().exec();
 };
 
-const newMenuItem = (_, args) => {
-  return MenuItem.create({ ...args.input, _id: new Types.ObjectId() });
+const newMenuItem = (_, { input }) => {
+  return MenuItem.create({ ...input, _id: new Types.ObjectId() });
 };
 
 const menuItems = () => {
   return MenuItem.find({}).lean().exec();
 };
 
-const updateMenuItem = (_, args) => {
-  const update = args.input;
-  return MenuItem.findByIdAndUpdate(args.id, update, { new: true })
-    .lean()
-    .exec();
+const updateMenuItem = (_, { id, input }) => {
+  return MenuItem.findByIdAndUpdate(id, input, { new: true }).lean().exec();
 };
 
-const removeMenuItem = (_, args) => {
-  return MenuItem.findByIdAndRemove(args.id).lean().exec();
+const removeMenuItem = (_, { id }) => {
+  return MenuItem.findByIdAndRemove(id).lean().exec();
 };
 
 const uploadImage = async (parent, { file }) => {
