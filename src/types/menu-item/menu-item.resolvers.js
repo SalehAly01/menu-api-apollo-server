@@ -4,7 +4,9 @@ import { MenuItem } from './menu-item.model';
 import handleImageUpload from '../../helpers/upload-image';
 
 const menuItem = (_, { id }) => {
-  return MenuItem.findById(id).lean().exec();
+  const objectId = Types.ObjectId(id);
+
+  return MenuItem.findById(objectId).lean().exec();
 };
 
 const newMenuItem = (_, { input }) => {
@@ -40,6 +42,6 @@ export default {
     removeMenuItem,
   },
   MenuItem: {
-    __resolveType: (item) => item.type,
+    __resolveType: () => 'MenuItem',
   },
 };
