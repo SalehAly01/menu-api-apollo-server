@@ -1,5 +1,5 @@
 import AWS from 'aws-sdk';
-import { uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 require('dotenv').config();
 
