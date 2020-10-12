@@ -4,12 +4,12 @@ import { v4 as uuidv4 } from 'uuid';
 require('dotenv').config();
 
 AWS.config.update({
-  accessKeyId: process.env.AWS_ACCESS_ID,
-  secretAccessKey: process.env.AWS_SECRET_KEY,
-  region: process.env.AWS_REGION,
+  accessKeyId: process.env.ACCESS_ID,
+  secretAccessKey: process.env.SECRET_KEY,
+  region: process.env.REGION,
 });
 
-const s3 = new AWS.S3({ region: process.env.AWS_REGION });
+const s3 = new AWS.S3({ region: process.env.REGION });
 
 const s3DefaultParams = {
   ACL: 'public-read',
