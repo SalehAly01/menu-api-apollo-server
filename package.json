@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Saleh Aly",
   "license": "MIT",
+  "engines": {
+    "node": "^10.13.0"
+  },
   "scripts": {
     "build": "babel src --out-dir dist",
     "dev": "nodemon --exec yarn restart",
